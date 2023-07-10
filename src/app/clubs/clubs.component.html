@@ -1,0 +1,36 @@
+<app-toolbar [title]="'Clubes'" [back]="'/'"></app-toolbar>
+<div class="clubs">
+    <button *ngIf="municipalityId" mat-fab class="clubs__add" routerLink="/municipalities/{{municipalityId}}/clubs/create">
+        <mat-icon>add</mat-icon>
+    </button>
+    <div class="clubs__municipality">
+        <mat-form-field>
+            <mat-label>Municipio</mat-label>
+            <mat-select [(value)]="municipalityId" (selectionChange)="selectMunicipality()">
+                <mat-option *ngFor="let municipality of municipalities" [value]="municipality.id">
+                    {{municipality.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="openCreateMunicipalityDialog()">Agregar municipio</button>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-paginator #paginator [length]="total" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changePage($event)"></mat-paginator>
+    <mat-list>
+        <div *ngFor="let club of clubs">
+            <div class="clubs__club">
+                <mat-list-item>
+                    <mat-icon matListIcon>place</mat-icon>
+                    <h3 matLine>{{club.name}}</h3>
+                </mat-list-item>
+                <button mat-icon-button routerLink="/clubs/{{club.id}}/edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="destroyClub(club.id)">
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+</div>

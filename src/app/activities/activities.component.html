@@ -1,0 +1,23 @@
+<app-toolbar [title]="'Servicios'"></app-toolbar>
+<div class="activities">
+    <button mat-fab class="activities__add" routerLink="/activities/create">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-paginator [length]="total" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changePage($event)"></mat-paginator>
+    <div class="activities__grid">
+        <mat-card class="activities__card" *ngFor="let activity of activities">
+            <mat-card-header>
+                <mat-card-title>{{activity.name}}</mat-card-title>
+            </mat-card-header>
+            <img class="activities__image" mat-card-image src="https://special-olympics-api.herokuapp.com/activities/{{activity.id}}/image">
+            <mat-card-actions class="activities__actions">
+                <button mat-icon-button routerLink="/activities/{{activity.id}}/edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="destroyActivity(activity.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

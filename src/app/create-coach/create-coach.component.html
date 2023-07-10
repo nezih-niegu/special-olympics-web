@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Agregar entrenador</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert create-coach__alert"></p>
+    <form class="create-coach__form" [formGroup]="storeCoachForm">
+        <label for="picture" class="create-coach__label">Foto</label>
+        <input id="picture" type="file" (change)="updatePicture($event.target.files)">
+        <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+        <mat-form-field><input matInput type="email" placeholder="E-mail" formControlName="email"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Teléfono" formControlName="phone"></mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="storeCoach(storeCoachForm.value)" cdkFocusInitial>Agregar</button>
+</div>

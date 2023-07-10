@@ -1,0 +1,20 @@
+<app-toolbar [title]="'Información de contacto'" [back]="'/'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="contact">
+    <div class="contact__info">
+        <div class="contact__header">
+            <h2>Información de contacto</h2>
+            <button mat-icon-button (click)="openEditContactDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="contact__content" *ngIf="state">
+            <h4>Email:</h4>
+            <span>{{state.email || 'No especificado'}}</span>
+            <h4>Facebook:</h4>
+            <span>{{state.facebook || 'No especificado'}}</span>
+            <h4>Instagram:</h4>
+            <span>{{state.instagram || 'No especificado'}}</span>
+        </div>
+    </div>
+</div>

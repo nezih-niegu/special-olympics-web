@@ -1,0 +1,27 @@
+<app-toolbar [title]="'Agregar club'"></app-toolbar>
+<div class="create-club">
+    <p [innerHTML]="alert" class="alert"></p>
+    <form class="create-club__form" [formGroup]="storeClubForm">
+        <h4>Información</h4>
+        <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Nombre de contacto" formControlName="contact_name"></mat-form-field>
+        <mat-form-field><input matInput type="email" placeholder="E-mail de contacto" formControlName="contact_email"></mat-form-field>
+        <h4>Deportes disponibles</h4>
+        <mat-list>
+            <div *ngFor="let availableSport of availableSports">
+                <div class="create-club__sport">
+                    <mat-list-item>
+                        <mat-icon matListIcon>sports_handball</mat-icon>
+                        <h3 matLine>{{availableSport.name}} en {{availableSport.address}}</h3>
+                    </mat-list-item>
+                    <button mat-icon-button color="warn" (click)="removeAvailableSport(availableSport)">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </mat-list>
+        <button mat-flat-button color="accent" class="create-club__add" (click)="openCreateAvailableSportDialog()">Agregar deporte</button>
+        <button mat-raised-button color="accent" class="create-club__save" (click)="storeClub()">Guardar</button>
+    </form>
+</div>

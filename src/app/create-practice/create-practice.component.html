@@ -1,0 +1,25 @@
+<app-toolbar [title]="'Agregar entrenamiento'" [back]="'/clubs/' + clubId + '/edit'"></app-toolbar>
+<div class="create-practice">
+    <p [innerHTML]="alert" class="alert"></p>
+    <form class="create-practice__form" [formGroup]="storePracticeForm">
+        <h4>Información</h4>
+        <mat-form-field><input matInput type="text" placeholder="Actividad" formControlName="activity"></mat-form-field>
+        <h4>Horarios</h4>
+        <mat-list>
+            <div *ngFor="let session of sessions">
+                <div class="create-practice__session">
+                    <mat-list-item>
+                        <mat-icon matListIcon>schedule</mat-icon>
+                        <h3 matLine>{{days[session.day]}} de {{session.start}} a {{session.end}}</h3>
+                    </mat-list-item>
+                    <button mat-icon-button color="warn" (click)="removeSession(session)">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </mat-list>
+        <button mat-flat-button color="accent" class="create-practice__add" (click)="openCreateSessionDialog()">Agregar horario</button>
+        <button mat-raised-button color="accent" class="create-practice__save" (click)="storePractice()">Guardar</button>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Agregar evento</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert create-event__alert"></p>
+    <form class="create-event__form" [formGroup]="storeEventForm">
+        <mat-form-field><input matInput type="text" placeholder="Nombre del evento" formControlName="name"></mat-form-field>
+        <mat-form-field><textarea matInput placeholder="Descripción" formControlName="description"></textarea></mat-form-field>
+        <mat-form-field><input matInput type="date" placeholder="Fecha de inicio" formControlName="startDate"></mat-form-field>
+        <mat-form-field><input matInput type="time" placeholder="Hora de inicio" formControlName="startTime"></mat-form-field>
+        <mat-form-field><input matInput type="date" placeholder="Fecha de fin" formControlName="endDate"></mat-form-field>
+        <mat-form-field><input matInput type="time" placeholder="Hora de fin" formControlName="endTime"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Lugar" formControlName="location"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Email de contacto" formControlName="contact_email"></mat-form-field>
+        <mat-form-field>
+            <mat-label>Tipo de evento</mat-label>
+            <mat-select formControlName="type">
+                <mat-option [value]="0">Deportivo selectivo</mat-option>
+                <mat-option [value]="1">Deportivo de convivencia</mat-option>
+                <mat-option [value]="2">Plática de familias</mat-option>
+                <mat-option [value]="3">Comunidades Saludables</mat-option>
+                <mat-option [value]="4">Evento social</mat-option>
+                <mat-option [value]="5">Capacitación a entrenadores voluntarios</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="storeEvent()" cdkFocusInitial>Agregar</button>
+</div>

@@ -1,0 +1,27 @@
+<app-toolbar [title]="'Crear servicio'"></app-toolbar>
+<div class="create-activity">
+    <p [innerHTML]="alert" class="alert"></p>
+    <mat-horizontal-stepper [linear]="true" class="create-activity__stepper">
+        <mat-step>
+            <ng-template matStepLabel>Ingresa información del deporte</ng-template>
+            <div class="create-activity__step">
+                <form [formGroup]="storeActivityForm" class="create-activity__form">
+                    <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+                    <mat-form-field><textarea matInput placeholder="Descripción" formControlName="description"></textarea></mat-form-field>
+                    <button class="create-activity__button" mat-flat-button color="accent" matStepperNext>Siguiente</button>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Selecciona una imagen para el servicio</ng-template>
+            <div class="create-activity__step">
+                <div class="create-activity__file">
+                    <mat-card class="create-activity__file-input">
+                        <input type="file" (change)="updateImage($event.target.files)">
+                    </mat-card>
+                    <button class="create-activity__button" mat-flat-button color="accent" (click)="storeActivity(storeActivityForm.value)">Finalizar</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

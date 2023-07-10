@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Agregar municipio</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert create-municipality__alert"></p>
+    <form class="create-municipality__form" [formGroup]="storeMunicipalityForm">
+        <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="storeMunicipality(storeMunicipalityForm.value)" cdkFocusInitial>Agregar</button>
+</div>

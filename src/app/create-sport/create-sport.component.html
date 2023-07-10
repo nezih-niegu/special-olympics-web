@@ -1,0 +1,54 @@
+<app-toolbar [title]="'Crear deporte'" [back]="'/sports'"></app-toolbar>
+<div class="create-sport">
+    <p [innerHTML]="alert" class="alert"></p>
+    <mat-horizontal-stepper [linear]="true" class="create-sport__stepper">
+        <mat-step>
+            <ng-template matStepLabel>Ingresa información del deporte</ng-template>
+            <div class="create-sport__step">
+                <form [formGroup]="storeSportForm" class="create-sport__form">
+                    <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+                    <mat-form-field><textarea matInput placeholder="Descripción" formControlName="description"></textarea></mat-form-field>
+                    <mat-form-field><input matInput type="text" placeholder="Notas" formControlName="notes"></mat-form-field>
+                    <mat-form-field><input matInput type="text" placeholder="Nombre de contacto" formControlName="contact_name"></mat-form-field>
+                    <mat-form-field><input matInput type="text" placeholder="E-mail de contacto" formControlName="contact_email"></mat-form-field>
+                    <mat-form-field><input matInput type="tel" placeholder="Teléfono de contacto" formControlName="contact_phone"></mat-form-field>
+                    <mat-form-field>
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let location of selectedLocations" [selectable]="true" [removable]="true" (removed)="removeLocation(location)">
+                                {{location.name}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+                            <input placeholder="Lugares" #locationInput [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addLocation($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedLocation($event)">
+                            <mat-option *ngFor="let location of locations" [value]="location.id">{{location.name}}</mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <button class="create-sport__button" mat-flat-button color="accent" matStepperNext>Siguiente</button>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Selecciona una imagen para el deporte</ng-template>
+            <div class="create-sport__step">
+                <div class="create-sport__file">
+                    <mat-card class="create-sport__file-input">
+                        <input type="file" (change)="updateImage($event.target.files)">
+                    </mat-card>
+                    <button class="create-sport__button" mat-flat-button color="accent" matStepperNext>Siguiente</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Selecciona un manual para el deporte</ng-template>
+            <div class="create-sport__step">
+                <div class="create-sport__file">
+                    <mat-card class="create-sport__file-input">
+                        <input type="file" (change)="updateManual($event.target.files)">
+                    </mat-card>
+                    <button class="create-sport__button" mat-flat-button color="accent" (click)="storeSport()">Finalizar</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

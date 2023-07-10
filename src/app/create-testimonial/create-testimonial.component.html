@@ -1,0 +1,38 @@
+<app-toolbar [title]="'Crear testimonio'" [back]="'/testimonials'"></app-toolbar>
+<div class="create-testimonial">
+    <p [innerHTML]="alert" class="alert"></p>
+    <mat-horizontal-stepper [linear]="true" class="create-testimonial__stepper">
+        <mat-step>
+            <ng-template matStepLabel>Ingresa información del testimonio</ng-template>
+            <div class="create-testimonial__step">
+                <form [formGroup]="storeTestimonialForm" class="create-testimonial__form">
+                    <mat-form-field><input matInput type="text" placeholder="Título" formControlName="title"></mat-form-field>
+                    <mat-form-field><textarea matInput placeholder="Contenido" formControlName="content"></textarea></mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Tipo</mat-label>
+                        <mat-select formControlName="type">
+                            <mat-option [value]="0">Familia</mat-option>
+                            <mat-option [value]="1">Atleta</mat-option>
+                            <mat-option [value]="2">Entrenador</mat-option>
+                            <mat-option [value]="3">Voluntario</mat-option>
+                            <mat-option [value]="4">Compañero unificado</mat-option>
+                            <mat-option [value]="5">Aliado</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button class="create-testimonial__button" mat-flat-button color="accent" matStepperNext>Siguiente</button>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Selecciona una imagen para el testimonio</ng-template>
+            <div class="create-testimonial__step">
+                <div class="create-testimonial__file">
+                    <mat-card class="create-testimonial__file-input">
+                        <input type="file" (change)="updateImage($event.target.files)">
+                    </mat-card>
+                    <button class="create-testimonial__button" mat-flat-button color="accent" (click)="storeTestimonial(storeTestimonialForm.value)">Finalizar</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

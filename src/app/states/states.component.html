@@ -1,0 +1,25 @@
+<div class="states">
+    <button mat-fab class="states__add" (click)="openCreateStateDialog()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <h2>Estados</h2>
+    <mat-paginator [length]="total" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changePage($event)"></mat-paginator>
+    <mat-list class="states__states">
+        <div *ngFor="let state of states">
+            <div class="states__item">
+                <mat-list-item>
+                    <mat-icon matListIcon>place</mat-icon>
+                    <h3 matLine>{{state.name}}</h3>
+                    <p matLine>{{state.admin_name}}: {{state.email}}</p>
+                </mat-list-item>
+                <button mat-icon-button (click)="openEditStateDialog(state.id)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <!-- <button mat-icon-button color="warn" (click)="destroyState(state.id)">
+                    <mat-icon>clear</mat-icon>
+                </button> -->
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+</div>

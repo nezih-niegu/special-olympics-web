@@ -1,0 +1,51 @@
+.programs{
+    width: 100%;
+    height: calc(100% - 64px);
+}
+
+.programs__add{
+    z-index: 100;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.programs__grid{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.programs__card{
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+
+    margin: 5vh 2%;
+}
+
+.programs__image{
+    height: 30vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+.programs__actions{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.programs__spacer{
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+}

@@ -1,0 +1,29 @@
+.states{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.states__add{
+    z-index: 100;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+.states__states{
+    margin-bottom: 5vh;
+}
+
+.states__item{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}

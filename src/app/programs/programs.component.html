@@ -1,0 +1,24 @@
+<app-toolbar [title]="'Programas'" [back]="'/'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="programs" *ngIf="!loading">
+    <button mat-fab class="programs__add" routerLink="/programs/create">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-paginator [length]="total" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changePage($event)"></mat-paginator>
+    <div class="programs__grid">
+        <mat-card class="programs__card" *ngFor="let program of programs">
+            <mat-card-header>
+                <mat-card-title>{{program.name}}</mat-card-title>
+            </mat-card-header>
+            <img class="programs__image" mat-card-image src="https://special-olympics-api.herokuapp.com/programs/{{program.id}}/image">
+            <mat-card-actions class="programs__actions">
+                <button mat-icon-button routerLink="/programs/{{program.id}}/edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="destroyProgram(program.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

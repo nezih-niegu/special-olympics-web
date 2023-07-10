@@ -1,0 +1,24 @@
+<app-toolbar [title]="'Testimonios'" [back]="'/'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="testimonials" *ngIf="!loading">
+    <button mat-fab class="testimonials__add" routerLink="/testimonials/create">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-paginator [length]="total" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changePage($event)"></mat-paginator>
+    <div class="testimonials__grid">
+        <mat-card class="testimonials__card" *ngFor="let testimonial of testimonials">
+            <mat-card-header>
+                <mat-card-title>{{testimonial.title}}</mat-card-title>
+            </mat-card-header>
+            <img class="testimonials__image" mat-card-image src="https://special-olympics-api.herokuapp.com/testimonials/{{testimonial.id}}/image">
+            <mat-card-actions class="testimonials__actions">
+                <button mat-icon-button routerLink="/testimonials/{{testimonial.id}}/edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="destroyTestimonial(testimonial.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<app-toolbar [title]="'Special Olympics'"></app-toolbar>
+<div class="home" *ngIf="access == 1">
+    <mat-card class="home__card" matRipple routerLink="/sports">
+        <mat-card-header class="home__header">
+            <mat-card-title>Deportes</mat-card-title>
+        </mat-card-header>
+        <img class="home__image" mat-card-image src="./assets/img/sports.png">
+    </mat-card>
+    <mat-card class="home__card" matRipple routerLink="/clubs">
+        <mat-card-header class="home__header">
+            <mat-card-title>Clubes</mat-card-title>
+        </mat-card-header>
+        <img class="home__image" mat-card-image src="./assets/img/clubs.jpg">
+    </mat-card>
+    <mat-card class="home__card" matRipple routerLink="/events">
+        <mat-card-header class="home__header">
+            <mat-card-title>Eventos</mat-card-title>
+        </mat-card-header>
+        <img class="home__image" mat-card-image src="./assets/img/events.jpg">
+    </mat-card>
+    <!-- <mat-card class="home__card" matRipple routerLink="/activities">
+        <mat-card-header class="home__header">
+            <mat-card-title>Servicios</mat-card-title>
+        </mat-card-header>
+        <img class="home__image" mat-card-image src="./assets/img/activities.jpg">
+    </mat-card> -->
+    <mat-card class="home__card" matRipple routerLink="/testimonials">
+        <mat-card-header class="home__header">
+            <mat-card-title>Testimonios</mat-card-title>
+        </mat-card-header>
+        <img class="home__image" mat-card-image src="./assets/img/testimonials.png">
+    </mat-card>
+    <mat-card class="home__card" matRipple routerLink="/programs">
+        <mat-card-header class="home__header">
+            <mat-card-title>Programas innovadores</mat-card-title>
+        </mat-card-header>
+        <img class="home__image" mat-card-image src="./assets/img/programs.jpg">
+    </mat-card>
+    <mat-card class="home__card" matRipple routerLink="/contact">
+        <mat-card-header class="home__header">
+            <mat-card-title>Información de contacto</mat-card-title>
+        </mat-card-header>
+        <img class="home__image" mat-card-image src="./assets/img/contact.jpg">
+    </mat-card>
+</div>
+<app-states *ngIf="access == 2"></app-states>

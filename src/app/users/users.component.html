@@ -1,0 +1,40 @@
+<app-toolbar [title]="'Usuarios'"></app-toolbar>
+<div class="users">
+    <h2>Solicitudes</h2>
+    <mat-paginator [length]="userRequestTotal" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changeUserRequestsPage($event)"></mat-paginator>
+    <mat-list class="users__requests">
+        <div class="users__user"  *ngFor="let userRequest of userRequests">
+            <div class="users__item">
+                <mat-list-item>
+                    <mat-icon matListIcon>person</mat-icon>
+                    <h3 matLine>{{userRequest.name}}</h3>
+                    <p matLine>{{userRequest.email}}</p>
+                </mat-list-item>
+                <button mat-icon-button class="users__accept" (click)="resolveUserRequest(userRequest.id, true)">
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="resolveUserRequest(userRequest.id, false)">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+    <h2>Usuarios aceptados</h2>
+    <mat-paginator [length]="userTotal" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changeUsersPage($event)"></mat-paginator>
+    <mat-list>
+        <div class="users__user"  *ngFor="let user of users">
+            <div class="users__item">
+                <mat-list-item>
+                    <mat-icon matListIcon>person</mat-icon>
+                    <h3 matLine>{{user.name}}</h3>
+                    <p matLine>{{user.email}}</p>
+                </mat-list-item>
+                <button mat-icon-button color="warn" (click)="destroyUser(user.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+</div>

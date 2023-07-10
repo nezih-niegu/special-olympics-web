@@ -1,0 +1,25 @@
+<app-toolbar [title]="'Deportes'" [back]="'/'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="sports" *ngIf="!loading">
+    <button mat-fab class="sports__add" routerLink="/sports/create">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-paginator [length]="total" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changePage($event)"></mat-paginator>
+    <div class="sports__grid">
+        <mat-card class="sports__card" *ngFor="let sport of sports">
+            <mat-card-header>
+                <mat-card-title>{{sport.name}}</mat-card-title>
+            </mat-card-header>
+            <img class="sports__image" mat-card-image src="https://special-olympics-api.herokuapp.com/sports/{{sport.id}}/image">
+            <mat-card-actions class="sports__actions">
+                <button mat-icon-button routerLink="/sports/{{sport.id}}/edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <span class="sports__spacer"></span>
+                <button mat-icon-button color="warn" (click)="destroySport(sport.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

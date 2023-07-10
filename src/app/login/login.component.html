@@ -1,0 +1,21 @@
+<div class="login">
+    <mat-card class="login__card">
+        <mat-card-header class="login__header">
+            <mat-card-title>Special Olympics México</mat-card-title>
+            <mat-card-subtitle class="login__subtitle">Iniciar sesión</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="login__content">
+            <p [innerHTML]="alert" class="alert"></p>
+            <form [formGroup]="loginForm" class="login__form">
+                <mat-form-field><input matInput type="email" placeholder="E-mail" formControlName="email"></mat-form-field>
+                <mat-form-field><input matInput type="password" placeholder="Contraseña" formControlName="password"></mat-form-field>
+                <mat-card-actions align="end">
+                    <div class="login__actions">
+                        <a href="../forgot-password" >Restablecer contraseña</a>
+                        <button type="submit" mat-raised-button color="accent" (click)="login(loginForm.value)">Iniciar sesión</button>
+                    </div>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

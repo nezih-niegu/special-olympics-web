@@ -1,0 +1,19 @@
+<mat-toolbar color="accent" class="toolbar">
+    <div>
+        <button mat-icon-button routerLink="/" *ngIf="access == 1">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button *ngIf="back" mat-icon-button routerLink="{{back}}">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+    </div>
+    <span>{{title}}</span>
+    <div>
+        <button mat-icon-button routerLink="/users" *ngIf="access == 1">
+            <mat-icon>people_alt</mat-icon>
+        </button>
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>

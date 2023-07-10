@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Editar imagen</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-activity-image__alert"></p>
+    <form class="edit-activity-image__form">
+        <label for="image" class="edit-activity-image__label">Imagen</label>
+        <input id="image" type="file" (change)="updateImage($event.target.files)">
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateActivityImage()" cdkFocusInitial>Actualizar</button>
+</div>

@@ -1,0 +1,63 @@
+<app-toolbar [title]="'Editar club'" [back]="'/clubs'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="edit-club" *ngIf="!loading">
+    <mat-tab-group mat-stretch-tabs>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>edit</mat-icon>
+                Información
+            </ng-template>
+            <div class="edit-club__info">
+                <div class="edit-club__header">
+                    <h2>Información</h2>
+                    <button mat-icon-button routerLink="/clubs/{{club.id}}/edit-info" *ngIf="club">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <div class="edit-club__content" *ngIf="club">
+                    <h4>Nombre:</h4>
+                    <span>{{club.name}}</span>
+                    <h4>Contacto:</h4>
+                    <span>{{club.contact_name}}</span>
+                    <span>{{club.contact_email}}</span>
+                    <h4>Deportes disponibles</h4>
+                    <span *ngFor="let availableSport of club.available_sports">{{availableSport.name}} en {{availableSport.address}}</span>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <button mat-fab class="edit-club__add" routerLink="/clubs/{{club.id}}/practices/create" *ngIf="club">
+                <mat-icon>add</mat-icon>
+            </button>
+            <ng-template mat-tab-label>
+                <mat-icon>schedule</mat-icon>
+                Entrenamientos
+            </ng-template>
+            <mwl-calendar-week-view [viewDate]="viewDate" [events]="events"></mwl-calendar-week-view>
+        </mat-tab>
+        <!-- <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>image</mat-icon>
+                Galería
+            </ng-template>
+            <div class="edit-club__tab">
+                <button mat-fab class="edit-club__add" (click)="openCreatePictureDialog()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <mat-paginator [length]="pictureTotal" pageSize="galleryPageSize" [pageSizeOptions]="[galleryPageSize]" (page)="changeGalleryPage($event)"></mat-paginator>
+                <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10">
+                    <div *ngFor="let picture of pictures">
+                        <mat-grid-tile matRipple>
+                            <button mat-icon-button class="edit-club__delete-picture" color="warn" (click)="destroyPicture(picture.id)">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                            <a href="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}" target="_blank">
+                                <img src="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}">
+                            </a>
+                        </mat-grid-tile>
+                    </div>
+                </mat-grid-list>
+            </div>
+        </mat-tab> -->
+    </mat-tab-group>
+</div>

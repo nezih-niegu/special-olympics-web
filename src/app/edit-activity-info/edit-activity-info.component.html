@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Editar información del servicio</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-activity-info__alert"></p>
+    <form class="edit-activity-info__form" [formGroup]="updateActivityForm">
+        <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+        <mat-form-field><textarea matInput placeholder="Descripción" formControlName="description"></textarea></mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateActivity(updateActivityForm.value)" cdkFocusInitial>Actualizar</button>
+</div>

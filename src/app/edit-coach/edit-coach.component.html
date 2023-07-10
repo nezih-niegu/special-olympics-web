@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Editar entrenador</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-coach__alert"></p>
+    <form class="edit-coach__form" [formGroup]="updateCoachForm">
+        <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+        <mat-form-field><input matInput type="email" placeholder="E-mail" formControlName="email"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Teléfono" formControlName="phone"></mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateCoach(updateCoachForm.value)" cdkFocusInitial>Guardar</button>
+</div>

@@ -1,0 +1,26 @@
+<app-toolbar [title]="'Editar servicio'"></app-toolbar>
+<div class="edit-activity">
+    <div class="edit-activity__info">
+        <div class="edit-activity__header">
+            <h2>Información</h2>
+            <button mat-icon-button (click)="openEditActivityInfoDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="edit-activity__content" *ngIf="activity">
+            <h4>Nombre:</h4>
+            <span>{{activity.name}}</span>
+            <h4>Descripción:</h4>
+            <span>{{activity.description}}</span>
+        </div>
+        <div class="edit-activity__header">
+            <h2>Imagen</h2>
+            <button mat-icon-button (click)="openEditActivityImageDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="edit-activity__content">
+            <img class="edit-activity__image" [src]="imageUrl">
+        </div>
+    </div>
+</div>

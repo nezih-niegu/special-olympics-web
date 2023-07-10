@@ -1,0 +1,63 @@
+<app-toolbar [title]="'Editar evento'" [back]="'/events'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="edit-event" *ngIf="!loading">
+    <mat-tab-group mat-stretch-tabs>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>edit</mat-icon>
+                Información
+            </ng-template>
+            <div class="edit-event__info">
+                <div class="edit-event__header">
+                    <h2>Información</h2>
+                    <button mat-icon-button (click)="openEditEventInfoDialog()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <div class="edit-event__content" *ngIf="event">
+                    <h4>Nombre:</h4>
+                    <span>{{event.name}}</span>
+                    <h4>Inicio:</h4>
+                    <span>{{formatDate(event.start)}}</span>
+                    <h4>Fin:</h4>
+                    <span>{{formatDate(event.end)}}</span>
+                    <h4>Descripción:</h4>
+                    <span>{{event.description}}</span>
+                    <h4>Lugar:</h4>
+                    <span>{{event.location}}</span>
+                    <h4>Contacto:</h4>
+                    <span>{{event.contact_email}}</span>
+                    <h4>Tipo de evento:</h4>
+                    <span>{{type[event.type]}}</span>
+                    <h4>Número de participantes</h4>
+                    <span>Atletas: {{event.athletes || 'No especificado'}}</span>
+                    <span>Voluntarios: {{event.volunteers || 'No especificado'}}</span>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>image</mat-icon>
+                Galería
+            </ng-template>
+            <div class="edit-event__tab">
+                <button mat-fab class="edit-event__add" (click)="openCreatePictureDialog()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <mat-paginator [length]="pictureTotal" pageSize="galleryPageSize" [pageSizeOptions]="[galleryPageSize]" (page)="changeGalleryPage($event)"></mat-paginator>
+                <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10">
+                    <div *ngFor="let picture of pictures">
+                        <mat-grid-tile matRipple>
+                            <button mat-icon-button class="edit-event__delete-picture" color="warn" (click)="destroyPicture(picture.id)">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                            <a href="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}" target="_blank">
+                                <img src="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}">
+                            </a>
+                        </mat-grid-tile>
+                    </div>
+                </mat-grid-list>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

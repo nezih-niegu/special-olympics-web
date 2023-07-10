@@ -1,0 +1,26 @@
+<app-toolbar [title]="'Editar entrenamiento'"></app-toolbar>
+<div class="edit-practice">
+    <p [innerHTML]="alert" class="alert"></p>
+    <form class="edit-practice__form" [formGroup]="updatePracticeForm">
+        <h4>Información</h4>
+        <mat-form-field><input matInput type="text" placeholder="Actividad" formControlName="activity"></mat-form-field>
+        <h4>Horarios</h4>
+        <mat-list>
+            <div *ngFor="let session of sessions">
+                <div class="edit-practice__session">
+                    <mat-list-item>
+                        <mat-icon matListIcon>schedule</mat-icon>
+                        <h3 matLine>{{days[session.day]}} de {{session.start}} a {{session.end}}</h3>
+                    </mat-list-item>
+                    <button mat-icon-button color="warn" (click)="removeSession(session)">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </mat-list>
+        <button mat-flat-button color="accent" class="edit-practice__button" (click)="openCreateSessionDialog()">Agregar horario</button>
+        <button mat-flat-button color="primary" class="edit-practice__button" (click)="destroyPractice()">Eliminar entrenamiento</button>
+        <button mat-raised-button color="accent" class="edit-practice__save" (click)="updatePractice()">Guardar</button>
+    </form>
+</div>

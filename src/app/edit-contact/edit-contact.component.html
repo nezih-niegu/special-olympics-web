@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Editar información de contacto</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-contact__alert"></p>
+    <form class="edit-contact__form" [formGroup]="updateStateContactForm">
+        <mat-form-field><input matInput type="email" placeholder="E-mail de contacto" formControlName="email"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Link de facebook" formControlName="facebook"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Link de instagram" formControlName="instagram"></mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateStateContact(updateStateContactForm.value)" cdkFocusInitial>Guardar</button>
+</div>

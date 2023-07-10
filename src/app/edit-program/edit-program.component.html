@@ -1,0 +1,38 @@
+<app-toolbar [title]="'Editar programa'" [back]="'/programs'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="edit-program" *ngIf="!loading">
+    <div class="edit-program__info">
+        <div class="edit-program__header">
+            <h2>Información</h2>
+            <button mat-icon-button (click)="openEditProgramInfoDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="edit-program__content" *ngIf="program">
+            <h4>Nombre:</h4>
+            <span>{{program.name}}</span>
+            <h4>Descripción:</h4>
+            <span>{{program.description}}</span>
+        </div>
+        <div class="edit-program__header">
+            <h2>Imagen</h2>
+            <button mat-icon-button (click)="openEditProgramImageDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="edit-program__content">
+            <img class="edit-program__image" [src]="imageUrl">
+        </div>
+        <div class="edit-program__header">
+            <h2>Manual</h2>
+            <button mat-icon-button (click)="openEditProgramManualDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="edit-program__content">
+            <a *ngIf="program" href="https://special-olympics-api.herokuapp.com/programs/{{program.id}}/manual" target="_blank">
+                <button mat-raised-button color="accent">Descargar</button>
+            </a>
+        </div>
+    </div>
+</div>

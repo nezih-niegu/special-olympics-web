@@ -1,0 +1,51 @@
+.edit-program{
+    width: 100%;
+    height: calc(100% - 64px);
+}
+
+.edit-program__tab{
+    height: calc(99vh - 112px);
+}
+
+.edit-program__header{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.edit-program__info{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.edit-program__image{
+    height: 50vh;
+}
+
+.edit-program__content{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-bottom: 5vh;
+}

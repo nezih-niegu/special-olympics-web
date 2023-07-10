@@ -1,0 +1,17 @@
+.edit-sport-manual__alert{
+    margin-top: 0;
+}
+
+.edit-sport-manual__form{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+.edit-sport-manual__label{
+    color: #757575;
+}

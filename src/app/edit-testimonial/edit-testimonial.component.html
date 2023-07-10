@@ -1,0 +1,29 @@
+<app-toolbar [title]="'Editar testimonio'" [back]="'/testimonials'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="edit-testimonial" *ngIf="!loading">
+    <div class="edit-testimonial__info">
+        <div class="edit-testimonial__header">
+            <h2>Información</h2>
+            <button mat-icon-button (click)="openEditTestimonialInfoDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="edit-testimonial__content" *ngIf="testimonial">
+            <h4>Nombre:</h4>
+            <span>{{testimonial.title}}</span>
+            <h4>Descripción:</h4>
+            <span>{{testimonial.content}}</span>
+            <h4>Tipo:</h4>
+            <span>{{type[testimonial.type]}}</span>
+        </div>
+        <div class="edit-testimonial__header">
+            <h2>Imagen</h2>
+            <button mat-icon-button (click)="openEditTestimonialImageDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div class="edit-testimonial__content">
+            <img class="edit-testimonial__image" [src]="imageUrl">
+        </div>
+    </div>
+</div>

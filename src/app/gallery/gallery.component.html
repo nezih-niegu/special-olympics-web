@@ -1,0 +1,19 @@
+<app-toolbar [title]="'Galería'"></app-toolbar>
+<div class="gallery">
+    <button mat-fab class="gallery__add" (click)="openCreatePictureDialog()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-paginator [length]="total" pageSize="pageSize" [pageSizeOptions]="[pageSize]" (page)="changePage($event)"></mat-paginator>
+    <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10">
+        <div *ngFor="let picture of pictures">
+            <mat-grid-tile matRipple>
+                <button mat-icon-button class="gallery__delete-picture" color="warn" (click)="destroyPicture(picture.id)">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+                <a href="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}" target="_blank">
+                    <img src="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}">
+                </a>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

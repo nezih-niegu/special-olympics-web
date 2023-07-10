@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Editar información del deporte</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-sport-info__alert"></p>
+    <form class="edit-sport-info__form" [formGroup]="updateSportForm">
+        <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+        <mat-form-field><textarea matInput placeholder="Descripción" formControlName="description"></textarea></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Notas" formControlName="notes"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Nombre de contacto" formControlName="contact_name"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="E-mail de contacto" formControlName="contact_email"></mat-form-field>
+        <mat-form-field><input matInput type="tel" placeholder="Teléfono de contacto" formControlName="contact_phone"></mat-form-field>
+        <mat-form-field>
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let location of selectedLocations" [selectable]="true" [removable]="true" (removed)="removeLocation(location)">
+                    {{location.name}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Lugares" #locationInput [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addLocation($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedLocation($event)">
+                <mat-option *ngFor="let location of locations" [value]="location.id">{{location.name}}</mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateSport()" cdkFocusInitial>Actualizar</button>
+</div>

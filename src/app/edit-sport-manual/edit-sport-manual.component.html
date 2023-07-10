@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Editar manual</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-sport-manual__alert"></p>
+    <form class="edit-sport-manual__form">
+        <label for="manual" class="edit-sport-manual__label">Manual</label>
+        <input id="manual" type="file" (change)="updateManual($event.target.files)">
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateSportManual()" cdkFocusInitial>Actualizar</button>
+</div>

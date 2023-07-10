@@ -1,0 +1,11 @@
+.gallery__add{
+    z-index: 100;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+.gallery__delete-picture{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

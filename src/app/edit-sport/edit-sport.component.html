@@ -1,0 +1,108 @@
+<app-toolbar [title]="'Editar deporte'" [back]="'/sports'"></app-toolbar>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="edit-sport" *ngIf="!loading">
+    <mat-tab-group mat-stretch-tabs>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>edit</mat-icon>
+                Información
+            </ng-template>
+            <div class="edit-sport__info">
+                <div class="edit-sport__header">
+                    <h2>Información</h2>
+                    <button mat-icon-button (click)="openEditSportInfoDialog()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <div class="edit-sport__content" *ngIf="sport">
+                    <h4>Nombre:</h4>
+                    <span>{{sport.name}}</span>
+                    <h4>Descripción:</h4>
+                    <span>{{sport.description}}</span>
+                    <h4>Notas:</h4>
+                    <span>{{sport.notes}}</span>
+                    <h4>Contacto:</h4>
+                    <span>{{sport.contact_name}}</span>
+                    <span>{{sport.contact_email}}</span>
+                    <span>{{sport.contact_phone}}</span>
+                    <h4>Lugares:</h4>
+                    <span *ngFor="let location of sport.locations">{{location.name}}</span>
+                </div>
+                <div class="edit-sport__header">
+                    <h2>Imagen</h2>
+                    <button mat-icon-button (click)="openEditSportImageDialog()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <div class="edit-sport__content">
+                    <img class="edit-sport__image" [src]="imageUrl">
+                </div>
+                <div class="edit-sport__header">
+                    <h2>Manual</h2>
+                    <button mat-icon-button (click)="openEditSportManualDialog()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <div class="edit-sport__content">
+                    <a *ngIf="sport" href="https://special-olympics-api.herokuapp.com/sports/{{sport.id}}/manual" target="_blank">
+                        <button mat-raised-button color="accent">Descargar</button>
+                    </a>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>person</mat-icon>
+                Entrenadores
+            </ng-template>
+            <div class="edit-sport__tab">
+                <button mat-fab class="edit-sport__add" (click)="openCreateCoachDialog()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <mat-list>
+                    <div *ngFor="let coach of coaches">
+                        <div class="edit-sport__coach">
+                            <mat-list-item>
+                                <img matListAvatar src="https://special-olympics-api.herokuapp.com/coaches/{{coach.id}}/picture">
+                                <h3 matLine>{{coach.name}}</h3>
+                                <p matLine>{{coach.email}}</p>
+                                <p matLine>{{coach.phone}}</p>
+                            </mat-list-item>
+                            <button mat-icon-button (click)="openEditCoachDialog(coach.id)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="destroyCoach(coach.id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>
+                </mat-list>
+            </div>
+        </mat-tab>
+        <!-- <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>image</mat-icon>
+                Galería
+            </ng-template>
+            <div class="edit-sport__tab">
+                <button mat-fab class="edit-sport__add" (click)="openCreatePictureDialog()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <mat-paginator [length]="pictureTotal" pageSize="galleryPageSize" [pageSizeOptions]="[galleryPageSize]" (page)="changeGalleryPage($event)"></mat-paginator>
+                <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10">
+                    <div *ngFor="let picture of pictures">
+                        <mat-grid-tile matRipple>
+                            <button mat-icon-button class="edit-sport__delete-picture" color="warn" (click)="destroyPicture(picture.id)">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                            <a href="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}" target="_blank">
+                                <img src="https://special-olympics-api.herokuapp.com/pictures/{{picture.id}}">
+                            </a>
+                        </mat-grid-tile>
+                    </div>
+                </mat-grid-list>
+            </div>
+        </mat-tab> -->
+    </mat-tab-group>
+</div>

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Editar información del testimonio</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-testimonial-info__alert"></p>
+    <form class="edit-testimonial-info__form" [formGroup]="updateTestimonialForm">
+        <mat-form-field><input matInput type="text" placeholder="Título" formControlName="title"></mat-form-field>
+        <mat-form-field><textarea matInput placeholder="Contenido" formControlName="content"></textarea></mat-form-field>
+        <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="type">
+                <mat-option [value]="0">Familia</mat-option>
+                <mat-option [value]="1">Atleta</mat-option>
+                <mat-option [value]="2">Entrenador</mat-option>
+                <mat-option [value]="3">Voluntario</mat-option>
+                <mat-option [value]="4">Compañero unificado</mat-option>
+                <mat-option [value]="5">Aliado</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateTestimonial(updateTestimonialForm.value)" cdkFocusInitial>Actualizar</button>
+</div>

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Editar estado</h1>
+<div mat-dialog-content>
+    <p [innerHTML]="alert" class="alert edit-state__alert"></p>
+    <form class="edit-state__form" [formGroup]="updateStateForm">
+        <mat-form-field><input matInput type="text" placeholder="Nombre" formControlName="name"></mat-form-field>
+        <mat-form-field><input matInput type="text" placeholder="Nombre del administrador" formControlName="admin_name"></mat-form-field>
+        <mat-form-field><input matInput type="email" placeholder="E-mail del administrador" formControlName="email"></mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button type="submit" mat-button (click)="updateState(updateStateForm.value)" cdkFocusInitial>Guardar</button>
+</div>
